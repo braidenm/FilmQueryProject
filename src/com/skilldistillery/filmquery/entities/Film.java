@@ -1,5 +1,7 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
+
 public class Film {
 	private int id;
 	private String title;
@@ -12,9 +14,11 @@ public class Film {
 	private double replacement_cost;
 	private String rating;
 	private String special_features;
+	private List<Actor> cast;
+	
 	
 	public Film(int id, String title, String description, int year, int language_id, int rental_duration,
-			double rental_rate, int length, double replacement_cost, String rating, String special_features) {
+			double rental_rate, int length, double replacement_cost, String rating, String special_features, List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -27,7 +31,12 @@ public class Film {
 		this.replacement_cost = replacement_cost;
 		this.rating = rating;
 		this.special_features = special_features;
+		this.cast = cast;
+		
+	}public List<Actor> getCast() {
+		return cast;
 	}
+	
 
 	public int getId() {
 		return id;
@@ -186,10 +195,10 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", year=" + year
-				+ ", language_id=" + language_id + ", rental_duration=" + rental_duration + ", rental_rate="
-				+ rental_rate + ", length=" + length + ", replacement_cost=" + replacement_cost + ", rating=" + rating
-				+ ", special_features=" + special_features + "]";
+		return "Film [id= " + id + ", title= " + title + ", description= " + description + ", year= " + year
+				+ ", language id= " + language_id + ", rental duration=" + rental_duration + ", rental rate= "
+				+ rental_rate + ", length= " + length + ", replacement cost= " + replacement_cost + ", rating= " + rating
+				+ ", special features= " + special_features + ", cast: " + cast + "]";
 	}
 	
 	
