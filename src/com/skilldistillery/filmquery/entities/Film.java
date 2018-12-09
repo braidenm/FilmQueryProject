@@ -15,10 +15,12 @@ public class Film {
 	private String rating;
 	private String special_features;
 	private List<Actor> cast;
-	
+	private String category;
+	private String language;
 	
 	public Film(int id, String title, String description, int year, int language_id, int rental_duration,
-			double rental_rate, int length, double replacement_cost, String rating, String special_features, List<Actor> cast) {
+			double rental_rate, int length, double replacement_cost, String rating,
+			String special_features, List<Actor> cast, String language, String category) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -32,11 +34,18 @@ public class Film {
 		this.rating = rating;
 		this.special_features = special_features;
 		this.cast = cast;
+		this.category = category;
+		this.language = language;
 		
 	}public List<Actor> getCast() {
 		return cast;
 	}
-	
+	public String getCategory() {
+		return category;
+	}
+	public String getLanguage() {
+		return language;
+	}
 
 	public int getId() {
 		return id;
@@ -198,7 +207,7 @@ public class Film {
 		return "Film [id= " + id + ", title= " + title + ", description= " + description + ", year= " + year
 				+ ", language id= " + language_id + ", rental duration=" + rental_duration + ", rental rate= "
 				+ rental_rate + ", length= " + length + ", replacement cost= " + replacement_cost + ", rating= " + rating
-				+ ", special features= " + special_features + ", cast: " + cast + "]";
+				+ ", special features= " + special_features + ", cast: " + cast + ", Language: " + language + ", Category: " + category + "]";
 	}
 	
 	

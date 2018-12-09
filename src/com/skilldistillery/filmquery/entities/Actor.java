@@ -1,9 +1,5 @@
 package com.skilldistillery.filmquery.entities;
 
-//Define an Actor class with id, 
-//first name, and last name fields. 
-//Include the usual getters, setters, toString,
-//etc (of course!), and appropriate constructor(s).
 public class Actor {
 	
 	private int id;

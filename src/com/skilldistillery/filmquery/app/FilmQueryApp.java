@@ -14,14 +14,8 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
-//    app.test();
 		app.launch();
 	}
-
-//  private void test() {
-//    Film film = db.getFilmById(1);
-//    System.out.println(film);
-//  }
 
 	private void launch() {
 		Scanner input = new Scanner(System.in);
@@ -71,14 +65,14 @@ public class FilmQueryApp {
 				choice = input.nextInt();
 
 				if (choice < 1 || choice > 3) {
-					System.err.println(" if Please enter a valid number 1 - 3 ");
+					System.err.println(" Please enter a valid number 1 - 3 ");
 					System.out.println();
 					choice = 0;
 				}
 			} catch (Exception e) {
 				input.nextLine();
 				System.out.println();
-				System.err.println(" catch Please enter a valid number 1 - 3: ");
+				System.err.println(" Please enter a valid number 1 - 3: ");
 				System.out.println();
 				choice = 0;
 			}
@@ -111,28 +105,48 @@ public class FilmQueryApp {
 				sb.append("Title: " + film.getTitle());
 				sb.append(", Year: " + film.getYear());
 				sb.append(", Rating: " + film.getRating());
+				sb.append(", Language: " + film.getLanguage());
+				sb.append(", Category: " + film.getCategory());
 				sb.append(", Desctription: " + film.getDescription());
-				sb.append(", Language: " + database.getLanguage(film.getLanguage_id()));
 				System.out.println(sb);
 				System.out.println(film.getCast());
+				database.printInventory(film.getId());
+				System.out.println();
+				System.out.println("___________________");
 			} else {
-				System.err.println("Film not in directory. Try again? (Y/N");
+				System.err.print("Film not in directory. Try again? (Y/N): ");
 				again = input.next();
 
 			}
+			if (again.equals("N")) {
+				//could do a separate method for this submenu, but would need to make
+				//a separate method for option2()'s submenu as well. one takes a film
+				//and the other takes a list<Film> not to mention the need to
+				//tie in the return statement would be more work than it would save.
+				do {
+					subMenu();
+					choice = input.nextInt();
+					System.out.println("____________________");
+					System.out.println();
+
+					if (choice == 2) {
+						System.out.println(film);
+						database.printInventory(film.getId());
+						System.out.println();
+						System.out.println("______________________");
+						choice = 0;
+					}
+				} while (choice == 0);
+			}
 		} while (again.equalsIgnoreCase("Y") ? true : false);
 
-		System.out.print("Return to main menu? (Y/N): ");
-		again = input.next();
-
-		return again.equalsIgnoreCase("Y") ? true : false;
+		return choice == 1 ? true : false;
 	}
 
 	private boolean option2(Scanner input, DatabaseAccessorObject database) {
 		List<Film> filmList = new ArrayList<>();
 		String again;
 		String phrase;
-
 		do {
 			input.nextLine();
 			again = "N";
@@ -141,7 +155,6 @@ public class FilmQueryApp {
 
 			// if the user puts in more than one word
 			phrase = phrase.replaceAll(" ", "% %");
-
 			filmList = database.getFilmsByKeyword(phrase);
 
 			if (filmList.size() == 0) {
@@ -150,24 +163,59 @@ public class FilmQueryApp {
 			}
 
 		} while (again.equalsIgnoreCase("Y") ? true : false);
-		int i = 1;
+		
+		int numFilms = 1;
 		for (Film film : filmList) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("Title: " + film.getTitle());
 			sb.append(", Year: " + film.getYear());
 			sb.append(", Rating: " + film.getRating());
+			sb.append(", Language: " + film.getLanguage());
+			sb.append(", Category: " + film.getCategory());
 			sb.append(", Desctription: " + film.getDescription());
-			sb.append(", Language: " + database.getLanguage(film.getLanguage_id()));
+			
 			System.out.println(sb);
 			System.out.println(film.getCast());
+			database.printInventory(film.getId());
+			System.out.println();
+			System.out.println("___________________");
 
-			i++;
+			numFilms++;
 		}
-		System.out.println("number of films: " + i);
+		System.out.println("number of films: " + numFilms);
+		System.out.println("______________________");
+		System.out.println();
+		int choice = 0;
+		//could do a separate method for this submenu, but would need to make
+		//a separate method for option2()'s submenu as well. one takes a film
+		//and the other takes a list<Film> not to mention the need to
+		//tie in the return statement would be more work than it would save.
+		do {
+			subMenu();
+			choice = input.nextInt();
+			System.out.println("____________________");
+			System.out.println();
 
-		System.out.print("Return to main menu? (Y/N): ");
-		again = input.next();
+			if (choice == 2) {
+				for (Film film : filmList) {
+					System.out.println(film);
+					database.printInventory(film.getId());
 
-		return again.equalsIgnoreCase("Y") ? true : false;
+					System.out.println();
+				}
+				System.out.println("______________________");
+				choice = 0;
+			}
+		} while (choice == 0);
+
+		return choice == 1 ? true : false;
+	}
+
+	private void subMenu() {
+		System.out.println("1) return to main menu");
+		System.out.println("2) view full details of film(s)");
+		System.out.println("3) exit");
+		System.out.print("Choice: ");
+
 	}
 }
