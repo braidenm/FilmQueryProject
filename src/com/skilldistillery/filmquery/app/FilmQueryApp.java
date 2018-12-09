@@ -30,6 +30,14 @@ public class FilmQueryApp {
 		DatabaseAccessorObject database = new DatabaseAccessorObject();
 
 		boolean again = true;
+		
+		System.out.println("Welcome to the Film Query App.");
+		System.out.println("Pick a choice to view films. when viewing films you will see");
+		System.out.println("relevant data and have an option to view in mor detail");
+		System.out.println("In options 1 and 2 you will also see inventory details.");
+		System.out.println();
+		System.out.println("_________________________");
+		
 		do {
 			choice = menuSelect(choice, input);
 
@@ -40,7 +48,10 @@ public class FilmQueryApp {
 			case 2:
 				again = option2(input, database);
 				break;
-			case 3:
+			case 3: database.printAllMovies();
+				again = true;
+				break;
+			case 4:
 				System.out.println("Goodbye");
 				System.exit(0);
 			}
@@ -51,9 +62,10 @@ public class FilmQueryApp {
 	}
 
 	private void menu() {
-		System.out.println("1) Look up a film by its id (1-1000)");
-		System.out.println("2) Look up a film by a search keyword");
-		System.out.println("3) Exit the application");
+		System.out.println("1) Look up a film by it's ID (1-1000)");
+		System.out.println("2) Look up a film by search keyword(s)");
+		System.out.println("3) Print All Films");
+		System.out.println("4) Exit the application");
 		System.out.print("choice: ");
 	}
 

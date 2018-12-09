@@ -18,5 +18,6 @@ public interface DatabaseAccessor {
   public String getInventoryDamaged(int filmId);
   public String getInventoryLost(int filmId);
   public void printInventory(int filmId);
+  public void printAllMovies ();
   
 }

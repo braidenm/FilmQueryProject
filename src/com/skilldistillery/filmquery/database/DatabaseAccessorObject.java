@@ -424,4 +424,40 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		
 	}
 
+	@Override
+	public void printAllMovies() {
+		List<String> filmList = new ArrayList<>();
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			String sql = "select id, title from film";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			
+			System.out.println();
+			while (rs.next()) {
+				StringBuilder film = new StringBuilder();
+				film.append("Film ID: ");
+				film.append(rs.getString(1));
+				film.append(" ");
+				film.append("Film Title: ");
+				film.append(rs.getString(2));
+				film.append(", ");
+				filmList.add(film.toString());
+			}
+			for (String film : filmList) {
+				System.out.println(film);
+				
+			}
+			System.out.println("_______________________");
+			System.out.println();
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+	}
+
 }
