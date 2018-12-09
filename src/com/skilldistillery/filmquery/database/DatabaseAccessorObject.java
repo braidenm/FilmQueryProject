@@ -34,8 +34,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sql = "SELECT title, description, release_year, language_id, rental_duration, ";
-			sql += " rental_rate, length, replacement_cost, rating, special_features " + " FROM film WHERE id = ?";
+			String sql = "SELECT title, description, release_year, language_id, rental_duration, "
+			+ " rental_rate, length, replacement_cost, rating, special_features FROM film WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
@@ -145,7 +145,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String lang = "";
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sql = "select name from language lang join film fm on lang.id = fm.language_id where fm.id = ?";
+			String sql = "select name from language where id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, langId);
 			ResultSet rs = stmt.executeQuery();
