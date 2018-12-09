@@ -1,6 +1,8 @@
 ## Film Query App
 _skill Distillery Week 6 Homework project_
 
+Main app is in "src/com/skilldistillery/filmquery" under APP
+
 ### Overview
 User sees a menu that asks them to see a film by film id, by keyword, view all films, and exit. Film id takes in an integer and matches the film id with the film in the database. This returns a film object and displays relevant information: Title, Year, Rating, Language, Category, Description, Actors, and Inventory Levels. Keyword search takes in a String that the user puts in and checks the database title and description for the keyword and returns the list of films that match displaying in a similar manner as the first option. View all films will show a list of all the films but only the film ID and title. In each menu option there is a sub menu that asks the user if they want to see full details of the movies or return to the main menu. The full details shows the raw details from the database.
 
