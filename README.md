@@ -11,7 +11,7 @@ User sees a menu that asks them to see a film by film id, by keyword, view all f
 * Interfaces
 * Used: Ternary's, for loops, advanced for loops, while loops, nested if statements,
 switch statements, String Builder, Exception handling with Try/Catch statements,
-Array Lists, Hash Sets, and use of Scanner
+Array Lists, Hash Sets, and Scanner
 * RegEx with Pattern Matcher
 
 ### Methods I am Proud of:
@@ -24,9 +24,9 @@ Film Id: 1 Condition: used : at store Id: 1 City : Denver State: Colorado.
 
 Film Id: 1 Condition: used : at store Id: 1 City : Denver State: Colorado.
 
-Film Id: 1 Condition: used : at store Id: 1 City : Denver State: Colorado. 
+Film Id: 1 Condition: used : at store Id: 1 City : Denver State: Colorado.
 
-Since this shows the data as many times as how many films each store had and their condition. so I took this raw data and parsed the information using each of the four methods (used, new, lost, damaged) I then iterated through the list and used a counter variable to document the total number of films for each condition. Then I would put that list into a Hash Set to get rid of the duplicates. I put the set into a list again so I could then iterate through the list and run another RegEx to count how many films each store individually had and reassign them to the list. at the end of the method I put together a String for the total number of films and then concatenated the list.toString to return the final String of inventory.
+This shows the data as many times as how many films each store had and their condition. So I took this raw data and parsed the information using each of the four methods (used, new, lost, damaged) I then iterated through the list and used a counter variable to document the total number of films for each condition. Then I would put that list into a Hash Set to get rid of the duplicates. I put the set into a list again so I could then iterate through the list and run another RegEx to count how many films each store individually had and reassign them to the list. at the end of the method I put together a String for the total number of films and then concatenated the list.toString to return the final String of inventory.
 
 In the Print method I first checked if each list was null, if not it would print that String. Each line would print used, new, lost, damaged.
 
@@ -37,4 +37,4 @@ I take the users keyword or multiple words. If the String returned was multiple 
 
 ### Needs More work
 
-JUnits tests could use more of tests. This is a topic I am searching for more understanding on how to write effective tests. I have some of the easier tests in the program. The tests that I am Unsure on how to write are the inventory testing and the keyword tests.
+JUnits tests could use more of tests. This is a topic I am searching for more understanding on how to write effective tests. I have some of the easier tests in the program. The tests that I am unsure on how to write are the inventory testing and the keyword tests.
