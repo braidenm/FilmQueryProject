@@ -32,8 +32,8 @@ public class FilmQueryApp {
 		boolean again = true;
 		
 		System.out.println("Welcome to the Film Query App.");
-		System.out.println("Pick a choice to view films. when viewing films you will see");
-		System.out.println("relevant data and have an option to view in mor detail");
+		System.out.println("Pick a choice to view films. When viewing films you will see");
+		System.out.println("relevant data and have an option to view in more details.");
 		System.out.println("In options 1 and 2 you will also see inventory details.");
 		System.out.println();
 		System.out.println("_________________________");
@@ -75,6 +75,7 @@ public class FilmQueryApp {
 				System.out.println("What would you like to do?");
 				menu();
 				choice = input.nextInt();
+				System.out.println();
 
 				if (choice < 1 || choice > 3) {
 					System.err.println(" Please enter a valid number 1 - 3 ");
@@ -176,7 +177,7 @@ public class FilmQueryApp {
 
 		} while (again.equalsIgnoreCase("Y") ? true : false);
 		
-		int numFilms = 1;
+		int numFilms = 0;
 		for (Film film : filmList) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("Title: " + film.getTitle());
@@ -195,7 +196,7 @@ public class FilmQueryApp {
 			numFilms++;
 		}
 		System.out.println("number of films: " + numFilms);
-		System.out.println("______________________");
+		System.out.println("___________________");
 		System.out.println();
 		int choice = 0;
 		//could do a separate method for this submenu, but would need to make
@@ -215,7 +216,7 @@ public class FilmQueryApp {
 
 					System.out.println();
 				}
-				System.out.println("______________________");
+				System.out.println("_____________________");
 				choice = 0;
 			}
 		} while (choice == 0);
